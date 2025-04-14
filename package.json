@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "An API for managing gym access, utilizing design patterns and SOLID principles.",
   "main": "server.js",
-  "scripts": {},
+  "scripts": {
+    "start": "node build/server.js",
+    "dev": "tsx watch src/server.ts",
+    "build": "tsup src --out-dir build"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alfredo-petri/gym-pass-api.git"
