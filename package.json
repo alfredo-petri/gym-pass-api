@@ -8,11 +8,24 @@
     "type": "git",
     "url": "git+https://github.com/alfredo-petri/gym-pass-api.git"
   },
-  "keywords": ["rest", "api", "fastify", "solid", "design", "pattern"],
+  "keywords": [
+    "rest",
+    "api",
+    "fastify",
+    "solid",
+    "design",
+    "pattern"
+  ],
   "author": "Alfredo Augusto Petri",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/alfredo-petri/gym-pass-api/issues"
   },
-  "homepage": "https://github.com/alfredo-petri/gym-pass-api#readme"
+  "homepage": "https://github.com/alfredo-petri/gym-pass-api#readme",
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "tsup": "^8.4.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
+  }
 }
