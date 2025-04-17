@@ -8,6 +8,7 @@
                 "argsIgnorePattern": "^_" 
             }
         ],
+        "no-useless-constructor": "off",
         "prettier/prettier": [
             "error",
             {
