@@ -1,4 +1,5 @@
 import { PrismaUsersRepository } from '@/repositories/prisma/prisma-users-repository'
+import { EmailAlreadyExistsError } from '@/use-cases/errors/email-already-exists-error'
 import { UserRegisterUseCase } from '@/use-cases/register'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import z from 'zod'
@@ -20,7 +21,10 @@ export async function userRegister(
         const userRegisterUseCase = new UserRegisterUseCase(usersRepository)
         await userRegisterUseCase.createNewUser(data)
     } catch (error) {
-        reply.status(409).send(error)
+        if (error instanceof EmailAlreadyExistsError) {
+            reply.status(409).send(error)
+        }
+        reply.status(500).send() // todo improve this error message
     }
 
     return reply.status(201).send()
