@@ -1,5 +1,5 @@
 import { PrismaUsersRepository } from '@/repositories/prisma/prisma-users-repository'
-import { EmailAlreadyExistsError } from '@/use-cases/errors/email-already-exists-error'
+// import { EmailAlreadyExistsError } from '@/use-cases/errors/email-already-exists-error'
 import { UserRegisterUseCase } from '@/use-cases/register'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import z from 'zod'
@@ -16,16 +16,17 @@ export async function userRegister(
 
     const data = registerBodySchema.parse(request.body)
 
-    try {
-        const usersRepository = new PrismaUsersRepository() 
-        const userRegisterUseCase = new UserRegisterUseCase(usersRepository)
-        await userRegisterUseCase.createNewUser(data)
-    } catch (error) {
-        if (error instanceof EmailAlreadyExistsError) {
-            reply.status(409).send(error)
-        }
-        reply.status(500).send() // todo improve this error message
-    }
+    // try {
+    const usersRepository = new PrismaUsersRepository()
+    const userRegisterUseCase = new UserRegisterUseCase(usersRepository)
+    await userRegisterUseCase.createNewUser(data)
+    // } catch (error) {
+    //     if (error instanceof EmailAlreadyExistsError) {
+    //         reply.status(409).send(error)
+    //     }
+    //     throw error
+    // reply.status(500).send() // todo improve this error message
+    // }
 
     return reply.status(201).send()
 }
