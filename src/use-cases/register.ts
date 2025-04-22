@@ -1,7 +1,7 @@
-import { UsersRepository } from '@/types/repositories-types/user-repository'
+import { UsersRepository } from '@/types/repositories-types/user-repository.js'
+import { AppError } from '@/utils/AppError.js'
+import { emailInUse } from '@/utils/db-queries-errors.js'
 import { hash } from 'bcryptjs'
-import { AppError } from '@/utils/AppError'
-import { emailInUse } from '@/utils/db-queries-errors'
 
 interface IRegisterUser {
     name: string

@@ -9,6 +9,7 @@
     "dev": "tsx watch src/server.ts",
     "build": "tsup src --out-dir build"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alfredo-petri/gym-pass-api.git"
