@@ -4,10 +4,12 @@
   "description": "An API for managing gym access, utilizing design patterns and SOLID principles.",
   "main": "server.js",
   "scripts": {
-    "lint": "eslint src --ext .ts --fix",
-    "start": "node build/server.js",
     "dev": "tsx watch src/server.ts",
-    "build": "tsup src --out-dir build"
+    "lint": "eslint src --ext .ts --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build": "tsup src --out-dir build",
+    "start": "node build/server.js"
   },
   "type": "module",
   "repository": {
