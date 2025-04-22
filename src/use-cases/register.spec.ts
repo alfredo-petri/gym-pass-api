@@ -44,4 +44,15 @@ describe('register user use case', () => {
             }),
         ).rejects.toBeInstanceOf(AppError)
     })
+
+    it('should be able to register', async () => {
+        const usersRepository = new InMemoryUsersRepository()
+        const registerUseCase = new UserRegisterUseCase(usersRepository)
+        const { user } = await registerUseCase.createNewUser({
+            name: 'John Doe',
+            email: 'johndoe@email.com',
+            password: 'Senha1234!',
+        })
+        expect(user.id).toEqual(expect.any(String))
+    })
 })
