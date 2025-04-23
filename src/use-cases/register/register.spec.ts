@@ -1,8 +1,8 @@
 import { expect, describe, it } from 'vitest'
-import { RegisterUseCase } from './register.js'
 import { compare } from 'bcryptjs'
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository.js'
 import { AppError } from '@/utils/app-error.js'
+import { RegisterUseCase } from './register.js'
 
 describe('register user use case', () => {
     it('should hash user password upon user registration', async () => {

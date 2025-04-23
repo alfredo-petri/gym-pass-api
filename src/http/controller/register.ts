@@ -1,6 +1,6 @@
 // import { EmailAlreadyExistsError } from '@/use-cases/errors/email-already-exists-error'
 import { PrismaUsersRepository } from '@/repositories/prisma/prisma-users-repository.js'
-import { RegisterUseCase } from '@/use-cases/register.js'
+import { RegisterUseCase } from '@/use-cases/register/register.js'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import z from 'zod'
 
