@@ -4,24 +4,24 @@ import { emailInUse } from '@/utils/db-queries-errors.js'
 import { User } from '@prisma/client'
 import { hash } from 'bcryptjs'
 
-interface IRegisterUser {
+interface IRegister {
     name: string
     email: string
     password: string
 }
 
-export interface IRegisterUserResponse {
+export interface IRegisterResponse {
     user: User
 }
 
-export class UserRegisterUseCase {
+export class RegisterUseCase {
     constructor(private usersRepository: UsersRepository) {}
 
     async createNewUser({
         email,
         name,
         password,
-    }: IRegisterUser): Promise<IRegisterUserResponse> {
+    }: IRegister): Promise<IRegisterResponse> {
         const passwordHash = await hash(password, 6)
 
         const emailExists = await this.usersRepository.findByEmail(email)

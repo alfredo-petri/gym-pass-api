@@ -38,6 +38,3 @@ export const passwordUppercaseErrorMessage =
 
 export const passwordLowercaseErrorMessage =
     'password must contain at least one lowercase letter'
-
-// user
-export const userRole = `user role must be "sale" or "customer"`
