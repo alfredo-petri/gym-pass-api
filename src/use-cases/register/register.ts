@@ -24,13 +24,13 @@ export class RegisterUseCase {
     }: IRegister): Promise<IRegisterResponse> {
         const passwordHash = await hash(password, 6)
 
-        const emailExists = await this.usersRepository.findByEmail(email)
+        const emailExists = await this.usersRepository.findUserByEmail(email)
 
         if (emailExists) {
             throw new AppError(emailInUse, 409)
         }
 
-        const user = await this.usersRepository.create({
+        const user = await this.usersRepository.createNewUser({
             email,
             name,
             passwordHash,
