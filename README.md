@@ -4,7 +4,7 @@ An API for managing gym access, utilizing design patterns and SOLID principles.
 
 ## RFs (requisitos funcionais)
 
-- [ ] Deve ser possivel se cadastrar;
+- [x] Deve ser possivel se cadastrar;
 - [ ] Deve ser possivel se autenticar;
 - [ ] Deve ser possivel obter o perfil de um usuário logado;
 - [ ] Deve ser possivel obter o numero de check-ins realizados pelo usuário logado;
@@ -18,7 +18,7 @@ An API for managing gym access, utilizing design patterns and SOLID principles.
 
 ## RNs (regras de negocio)
 
-- [ ] O usuário não deve poder se cadastrar com um email duplicado;
+- [x] O usuário não deve poder se cadastrar com um email duplicado;
 - [ ] O usuário não pode fazer check-in 2 vezes no mesmo dia;
 - [ ] O usuário não pode fazer check-in se não estiver perto (100m) da academia;
 - [ ] O check-in só pode ser validado até 20 min depois de ser criado;
@@ -28,7 +28,7 @@ An API for managing gym access, utilizing design patterns and SOLID principles.
 
 ## RNFs (requisitos não funcionais)
 
-- [ ] A senha do usuário deve ser criptografada;
+- [x] A senha do usuário deve ser criptografada;
 - [ ] Os dados da aplicação precisam estar persistidos em um banco de dados;
 - [ ] Todas as listas de dados precisam estar paginadas com 20 items por página;
 - [ ] O usuário deve ser identificado por um JWT (json web token)
