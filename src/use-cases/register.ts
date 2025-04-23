@@ -1,5 +1,5 @@
 import { UsersRepository } from '@/types/repositories-types/user-repository.js'
-import { AppError } from '@/utils/AppError.js'
+import { AppError } from '@/utils/app-error.js'
 import { emailInUse } from '@/utils/db-queries-errors.js'
 import { User } from '@prisma/client'
 import { hash } from 'bcryptjs'
