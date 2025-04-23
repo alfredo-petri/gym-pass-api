@@ -14,7 +14,7 @@ interface AuthenticateUseCaseResponse {
 
 export class AuthenticateUseCase {
     constructor(private usersRepository: UsersRepository) {}
-    async authenticate({
+    async authenticateLogin({
         email,
         password,
     }: AuthenticateUseCaseRequest): Promise<AuthenticateUseCaseResponse> {
