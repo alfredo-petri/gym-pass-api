@@ -1,7 +1,8 @@
 import { expect, describe, it } from 'vitest'
-import { hash } from 'bcryptjs'
+import { compare, hash } from 'bcryptjs'
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository.js'
 import { AuthenticateUseCase } from './authenticate.js'
+import { AppError } from '@/utils/app-error.js'
 
 describe('authenticate use case', () => {
     const password = 'Senha1234!'
@@ -23,5 +24,21 @@ describe('authenticate use case', () => {
         })
 
         expect(user.id).toEqual(expect.any(String))
+    })
+
+    it('should not be able to authenticate with wrong email', async () => {
+        const usersRepository = new InMemoryUsersRepository()
+        const ust = new AuthenticateUseCase(usersRepository)
+        await expect(
+            ust.authenticateLogin({
+                email,
+                password,
+            }),
+        ).rejects.toEqual(
+            expect.objectContaining({
+                message: 'invalid credentials',
+                statusCode: 401,
+            }),
+        )
     })
 })
