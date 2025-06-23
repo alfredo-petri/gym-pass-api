@@ -6,15 +6,15 @@ import { RegisterUseCase } from './register.js'
 
 describe('register user use case', () => {
     let usersRepository: InMemoryUsersRepository
-    let ust: RegisterUseCase
+    let sut: RegisterUseCase
 
     beforeEach(() => {
         usersRepository = new InMemoryUsersRepository()
-        ust = new RegisterUseCase(usersRepository)
+        sut = new RegisterUseCase(usersRepository)
     })
 
     it('should hash user password upon user registration', async () => {
-        const { user } = await ust.createNewUser({
+        const { user } = await sut.createNewUser({
             name: 'John Doe',
             email: 'johndoe@email.com',
             password: 'Senha1234!',
@@ -31,14 +31,14 @@ describe('register user use case', () => {
     it('should not be able to register with same email twice', async () => {
         const email = 'johndoe@email.com'
 
-        await ust.createNewUser({
+        await sut.createNewUser({
             name: 'John Doe',
             email,
             password: 'Senha1234!',
         })
 
         await expect(() =>
-            ust.createNewUser({
+            sut.createNewUser({
                 name: 'John Doe',
                 email,
                 password: 'Senha1234!',
@@ -47,7 +47,7 @@ describe('register user use case', () => {
     })
 
     it('should be able to register', async () => {
-        const { user } = await ust.createNewUser({
+        const { user } = await sut.createNewUser({
             name: 'John Doe',
             email: 'johndoe@email.com',
             password: 'Senha1234!',
