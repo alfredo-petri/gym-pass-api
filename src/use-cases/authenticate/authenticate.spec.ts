@@ -8,11 +8,11 @@ describe('authenticate use case', () => {
     const email = 'johndoe@email.com'
 
     let usersRepository: InMemoryUsersRepository
-    let ust: AuthenticateUseCase
+    let sut: AuthenticateUseCase
 
     beforeEach(() => {
         usersRepository = new InMemoryUsersRepository()
-        ust = new AuthenticateUseCase(usersRepository)
+        sut = new AuthenticateUseCase(usersRepository)
     })
 
     it('should be able to authenticate', async () => {
@@ -22,7 +22,7 @@ describe('authenticate use case', () => {
             passwordHash: await hash(password, 6),
         })
 
-        const { user } = await ust.authenticateLogin({
+        const { user } = await sut.authenticateLogin({
             email: 'johndoe@email.com',
             password,
         })
@@ -32,7 +32,7 @@ describe('authenticate use case', () => {
 
     it('should not be able to authenticate with wrong email', async () => {
         await expect(
-            ust.authenticateLogin({
+            sut.authenticateLogin({
                 email,
                 password,
             }),
@@ -52,7 +52,7 @@ describe('authenticate use case', () => {
         })
 
         await expect(
-            ust.authenticateLogin({
+            sut.authenticateLogin({
                 email: 'johndoe@email.com',
                 password: 'wrong-password',
             }),
