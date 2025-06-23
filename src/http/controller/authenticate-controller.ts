@@ -1,6 +1,5 @@
-import { PrismaUsersRepository } from '@/repositories/prisma/prisma-users-repository.js'
 import { sessionSchema } from '@/schemas/session/session-schema.js'
-import { AuthenticateUseCase } from '@/use-cases/authenticate/authenticate.js'
+import { makeAuthenticateUseCase } from '@/use-cases/factories/make-authenticate-use-case.js'
 import { FastifyReply, FastifyRequest } from 'fastify'
 
 export async function authenticateController(
@@ -9,8 +8,8 @@ export async function authenticateController(
 ) {
     const data = sessionSchema.parse(request.body)
 
-    const usersRepository = new PrismaUsersRepository()
-    const authenticateUseCase = new AuthenticateUseCase(usersRepository)
+    const authenticateUseCase = makeAuthenticateUseCase()
+
     await authenticateUseCase.authenticateLogin(data)
 
     return reply.status(200).send()
