@@ -28,4 +28,19 @@ describe('checkin use case', () => {
 
         expect(checkIn.id).toEqual(expect.any(String))
     })
+    it('should not be able to check in twice in the same day', async () => {
+        vi.setSystemTime(new Date(2022, 0, 20, 8, 0, 0))
+
+        await sut.createNewCheckIn({
+            gymId: 'gym-01',
+            userId: 'user-01',
+        })
+
+        await expect(() =>
+            sut.createNewCheckIn({
+                gymId: 'gym-01',
+                userId: 'user-01',
+            }),
+        ).rejects.toBeInstanceOf(Error)
+    })
 })
